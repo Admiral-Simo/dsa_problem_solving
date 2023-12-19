@@ -2,8 +2,10 @@
  * @param {number} n
  * @return {number}
  */
-var fib = function(n) {
-    if (n == 0) return 0;
+var fib = function(n, memo = {}) {
+    if (n === 0) return 0;
     if (n <= 2) return 1;
-    return fib(n - 1) + fib(n - 2);
+    if (memo[n]) return memo[n];
+    memo[n] = fib(n - 1) + fib(n - 2);
+    return memo[n];
 };
