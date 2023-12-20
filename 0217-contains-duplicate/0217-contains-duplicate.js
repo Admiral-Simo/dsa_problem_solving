@@ -3,9 +3,10 @@
  * @return {boolean}
  */
 var containsDuplicate = (nums) => {
-  nums.sort();
-  for(let i = 0; i < nums.length - 1; i++) {
-    if (nums[i] == nums[i + 1]) return true;
+  const seen = {};
+  for(let i = 0; i < nums.length; i++) {
+    if (seen[nums[i]]) return true;
+    else seen[nums[i]] = 1; 
   }
   return false;
 
