@@ -3,11 +3,13 @@
  * @return {number}
  */
 
-const climbStairs = (target,n = 0, memo = []) => {
+const climbStairs = (n) => {
     // goal what's the number of possibilities to reach the sum n with only positive numbers zero not included n is included
-    if (typeof memo[n] !== 'undefined') return memo[n];
-    if (n > target) return 0;
-    if (n === target) return 1;
-    memo[n] = climbStairs(target,n + 1, memo ) + climbStairs(target,n + 2, memo )
-    return memo[n];
+    let one = 1, two = 1;
+    for(let i = 0; i < n - 1; i++) {
+        let temp = one;
+        one = one + two;
+        two = temp;
+    }
+    return one;
 }
