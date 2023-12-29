@@ -2,26 +2,17 @@
  * @param {number} numRows
  * @return {number[][]}
  */
-const pascalNext = (nums) => {
-    let result = [];
-    for(let i = -1; i < nums.length; i++) {
-        if (isNaN(nums[i] + nums[i+1])) {
-            result.push(1);
-            continue;
-        } else {
-            result.push(nums[i] + nums[i + 1]);
-        }
-    }
-    return result
-}
 const generate = (n) => {
     let result = [];
     for(let i = 0; i < n; i++) {
-        if (i === 0) {
-            result.push(pascalNext([]));
-            continue;
+        let row = [];
+        for(let j = 0; j <= i; j++) {
+            const left = (result[i - 1] && result[i - 1][j - 1]) || 0;
+            const right = (result[i - 1] && result[i - 1][j]) || 0;
+
+            row.push(left + right || 1)
         }
-        result.push(pascalNext(result[i - 1])); 
-    }
+        result.push(row);
+    }   
     return result;
 }
