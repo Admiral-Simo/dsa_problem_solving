@@ -1,13 +1,11 @@
-const exist = (word, char) => {
-    for(let som of word) {
-        if (som === char) return true;
-    }
-    return false;
-}
 var numJewelsInStones = function(jewels, stones) {
  let count = 0;
+ let mp = {};
+ for(let char of jewels) {
+    mp[char] = 1;
+ }
  for(let char of stones) {
-    if (exist(jewels, char)) count++;
+    if (mp[char]) count++;
  }   
  return count;
 };
