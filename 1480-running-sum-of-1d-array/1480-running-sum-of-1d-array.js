@@ -3,9 +3,10 @@
  * @return {number[]}
  */
 const runningSum = (nums) => {
-	let result = [nums[0]];
-	for(let i = 1; i < nums.length; i++) {
-		result.push(nums[i] + result[i - 1]);
+	let sum = 0;
+	for(let i = 0; i < nums.length; i++) {
+		sum += nums[i];
+		nums[i] = sum;
 	}
-	return result;
+	return nums;
 }
