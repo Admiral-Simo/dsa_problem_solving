@@ -8,7 +8,7 @@ var replaceElements = function (arr) {
   for (let i = arr.length - 2; i >= 0; --i) {
     let currentElement = arr[i];
     arr[i] = max;
-    max = Math.max(max, currentElement);
+    if (currentElement > max) max = currentElement;
   }
   return arr;
 };
