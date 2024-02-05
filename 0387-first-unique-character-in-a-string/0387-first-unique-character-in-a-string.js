@@ -5,11 +5,16 @@
 var firstUniqChar = function (s) {
   let charMap = {};
   for (let i = 0; i < s.length; i++) {
-    charMap[s.charAt(i)] = (charMap[s.charAt(i)] ?? 0) + 1;
+    if (charMap[s.charAt(i)] !== undefined) {
+      charMap[s.charAt(i)].count++;
+    } else {
+      charMap[s.charAt(i)] = { count: 1, index: i };
+    }
   }
-  for (let i = 0; i < s.length; i++) {
-    if (charMap[s.charAt(i)] === 1) return i;
+
+  for (const key in charMap) {
+    if (charMap[key].count === 1) return charMap[key].index;
   }
+
   return -1;
 };
-
