@@ -4,8 +4,6 @@ public:
     int max = nums.size();
     int min = 1;
     std::vector<int> result;
-    if (nums.empty())
-        return result;
     std::set<int> seen;
     for (int i = 0; i < nums.size(); i++) {
       seen.insert(nums[i]);
@@ -15,13 +13,6 @@ public:
         result.push_back(i);
     }
     return result;
-  }
-  void printVector(std::vector<int> &nums) {
-    std::cout << "{ ";
-    for (int i = 0; i < nums.size(); i++) {
-      std::cout << nums[i] << ' ';
-    }
-    std::cout << "}\n";
   }
 };
 
