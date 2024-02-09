@@ -1,18 +1,24 @@
 class Solution {
 public:
   std::vector<int> findDisappearedNumbers(std::vector<int> &nums) {
-    int max = nums.size();
-    int min = 1;
-    std::vector<int> result;
-    std::set<int> seen;
+      std::vector<int> result;
+      for(int n : nums) {
+          int i = abs(n) - 1;
+          nums[i] = -abs(nums[i]);
+      }
+      for(int i = 0; i < nums.size(); i++) {
+          if (nums[i] > 0) {
+              result.push_back(i + 1);
+          }
+      }
+      return result;
+  }
+  void printVector(std::vector<int> &nums) {
+    std::cout << "{ ";
     for (int i = 0; i < nums.size(); i++) {
-      seen.insert(nums[i]);
+      std::cout << nums[i] << ' ';
     }
-    for (int i = min; i <= max; i++) {
-      if (!seen.count(i))
-        result.push_back(i);
-    }
-    return result;
+    std::cout << "}\n";
   }
 };
 
