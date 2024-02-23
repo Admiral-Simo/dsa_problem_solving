@@ -3,10 +3,10 @@
  * @return {boolean}
  */
 var isPalindrome = function (x) {
-  const s = x.toString();
+  let s = x.toString();
   let t = "";
-  for (let i = s.length - 1; i > -1; i--) {
-    t = t + s[i];
+  for (let i = s.length - 1; i >= 0; i--) {
+    t += s[i];
   }
   return s == t;
 };
