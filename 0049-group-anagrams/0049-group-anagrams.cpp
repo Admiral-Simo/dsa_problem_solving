@@ -2,23 +2,22 @@ class Solution {
 public:
   std::vector<std::vector<std::string>>
   groupAnagrams(std::vector<std::string> &strs) {
+    std::unordered_map<std::string, std::vector<std::string>> m;
+    for (const std::string& s : strs) {
+      int count[26] = {0};
+      for (char c : s) {
+        count[c - 'a']++;
+      }
+      std::string key = "";
+      for (int e : count) {
+        key.append(std::to_string(e) + '#');
+      }
+      m[key].push_back(s);
+    }
     std::vector<std::vector<std::string>> result;
-    std::vector<std::string> something;
-    std::unordered_map<std::string, std::vector<std::string>> hashmap;
-
-    for (std::string s : strs) {
-      std::sort(s.begin(), s.end());
-      something.push_back(s);
+    for (const auto& [_, second]: m) {
+        result.push_back(second);
     }
-
-    for (int i = 0; i < something.size(); i++) {
-      hashmap[something[i]].push_back(strs[i]);
-    }
-
-    for (const auto &[sorted_word, arr] : hashmap) {
-        result.push_back(arr);
-    }
-
     return result;
   }
 };
