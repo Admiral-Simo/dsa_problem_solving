@@ -1,10 +1,10 @@
 class Solution {
 public:
     int missingNumber(std::vector<int>& nums) {
-        std::unordered_set<int> numSet(nums.begin(), nums.end());
-        for (int x = 0; x <= nums.size(); x++) {
-            if (numSet.find(x) == numSet.end()) return x;
+        int missing = nums.size();
+        for (int i = 0; i < nums.size(); i++) {
+            missing ^= i ^ nums[i];
         }
-        return -1;
+        return missing;
     }
 };
