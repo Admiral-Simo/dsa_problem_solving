@@ -12,8 +12,10 @@
 class Solution {
 public:
   ListNode *insertGreatestCommonDivisors(ListNode *head) {
+    if (head == nullptr || head->next == nullptr)
+      return head;
     ListNode *tmpHead = head;
-    while (tmpHead != nullptr && tmpHead->next != nullptr) {
+    while (tmpHead->next != nullptr) {
       ListNode *NodeToInsert =
           new ListNode(std::gcd(tmpHead->val, tmpHead->next->val));
       NodeToInsert->next = tmpHead->next;
@@ -23,4 +25,3 @@ public:
     return head;
   }
 };
-
