@@ -6,7 +6,6 @@ public:
             if (x == 0) return 0;
             if (x < 0) negative_count++;
         }
-        if (negative_count == 0 || negative_count % 2 == 0) return 1;
-        else return -1;
+        return (negative_count % 2) == 0 ? 1 : -1;
     }
 };
