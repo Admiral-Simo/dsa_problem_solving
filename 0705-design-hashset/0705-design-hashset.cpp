@@ -1,29 +1,28 @@
 class MyHashSet {
 private:
-    std::vector<int> hashSet;
+  std::unordered_map<int, bool> map;
+
 public:
   MyHashSet() {}
 
   void add(int key) {
-    if (!contains(key)) {
-        hashSet.push_back(key);
-    }
+      map[key] = true;
   }
 
   void remove(int key) {
-      int index = -1;
-      for (int i = 0; i < hashSet.size(); i++) {
-        if (hashSet[i] == key)  index = i;
-      }
-      if (index != -1) {
-          hashSet.erase(hashSet.begin() + index);
-      }
+    map.erase(key);
   }
 
   bool contains(int key) {
-      for (int n : hashSet) {
-         if (key == n) return true;
-      }
-      return false;
+      return map[key];
   }
 };
+
+
+/**
+ * Your MyHashSet object will be instantiated and called as such:
+ * MyHashSet* obj = new MyHashSet();
+ * obj->add(key);
+ * obj->remove(key);
+ * bool param_3 = obj->contains(key);
+ */
