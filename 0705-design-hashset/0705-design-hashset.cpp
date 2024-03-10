@@ -10,13 +10,14 @@ public:
   }
 
   void remove(int key) {
-    map[key] = false;
+    map.erase(key);
   }
 
   bool contains(int key) {
       return map[key];
   }
 };
+
 
 /**
  * Your MyHashSet object will be instantiated and called as such:
