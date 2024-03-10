@@ -11,12 +11,12 @@ public:
     for (int n : nums2) {
       set2.insert(n);
     }
-    for (int n : set1) {
+    for (const auto &n : set1) {
         if (set2.find(n) == set2.end()) {
             answer[0].push_back(n);
         }
     }
-    for (int n : set2) {
+    for (const auto &n : set2) {
         if (set1.find(n) == set1.end()) {
             answer[1].push_back(n);
         }
