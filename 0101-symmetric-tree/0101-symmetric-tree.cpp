@@ -1,29 +1,20 @@
 class Solution {
-public:
-  bool isMirror(TreeNode *leftSubtree, TreeNode *rightSubtree) {
-    // Base cases:
-    // If both subtrees are null, they are symmetric.
-    if (!leftSubtree && !rightSubtree)
+private:
+  bool isMirror(TreeNode *left_subtree, TreeNode *right_subtree) {
+    if (left_subtree == nullptr && right_subtree == nullptr) {
       return true;
-
-    // If one subtree is null and the other is not, they are not symmetric.
-    if (!leftSubtree || !rightSubtree)
+    }
+    if (left_subtree == nullptr || right_subtree == nullptr) {
       return false;
-
-    // Check if the values at the current nodes are equal,
-    // and recursively check the symmetry of their children.
-    return (leftSubtree->val == rightSubtree->val) &&
-           isMirror(leftSubtree->left, rightSubtree->right) &&
-           isMirror(leftSubtree->right, rightSubtree->left);
+    }
+    return (left_subtree->val == right_subtree->val) &&
+           isMirror(left_subtree->left, right_subtree->right) && isMirror(left_subtree->right, right_subtree->left);
   }
 
+public:
   bool isSymmetric(TreeNode *root) {
-    // If the root is null, it's considered symmetric.
-    if (!root)
+    if (root == nullptr)
       return true;
-
-    // Call the helper function to check the symmetry of the left and right
-    // subtrees.
-    return isMirror(root->left, root->right);
+    return isMirror(root->right, root->left);
   }
 };
