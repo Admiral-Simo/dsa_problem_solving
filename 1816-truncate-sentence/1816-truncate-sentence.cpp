@@ -14,16 +14,9 @@ public:
                 break;
             }
         }
-        std::string result;
         if (truncate_index != -1) {
-            // that means that we have to push characters
-            // to the result from the s till the truncate_index
-            for (int i = 0; i < truncate_index; i++) {
-                result.push_back(s[i]);
-            }
-        } else {
-            return s;
+            s = s.substr(0, truncate_index);
         }
-        return result;
+        return s;
     }
 };
