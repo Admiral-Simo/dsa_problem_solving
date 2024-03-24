@@ -9,12 +9,12 @@ public:
           continue;
         string rowKey = "row:" + to_string(i) + " num: " + board[i][j];
         string colKey = "col:" + to_string(j) + " num: " + board[i][j];
-        string boxKey = "box:" + to_string(i / 3) + to_string(j / 3) + " num: " + board[i][j];
+        string boxKey = "box:" + to_string(i / 3) + to_string(j / 3) +
+                        " num: " + board[i][j];
 
         if (seen.count(rowKey) || seen.count(colKey) || seen.count(boxKey)) {
           return false;
         }
-
         seen.insert(rowKey);
         seen.insert(colKey);
         seen.insert(boxKey);
