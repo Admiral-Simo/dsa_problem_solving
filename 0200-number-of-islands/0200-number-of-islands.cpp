@@ -28,8 +28,8 @@ public:
         if (visited.count(to_string(i) + ',' + to_string(j)) == 0 &&
             grid[i][j] == '1') {
           // if cell equals to one execute a dfs otherwise
-          ++island_count;
           dfs(grid, visited, i, j);
+          ++island_count;
         }
       }
     }
