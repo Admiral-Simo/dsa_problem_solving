@@ -3,10 +3,10 @@ private:
   void dfs(vector<vector<char>> &grid, unordered_set<string> &visited, int r,
            int c) {
     if (c >= grid[0].size() || r >= grid.size() || min(c, r) < 0 ||
-        grid[r][c] == '0' || visited.count(to_string(r) + ',' + to_string(c)))
+        grid[r][c] == '0')
       return;
 
-    visited.insert(to_string(r) + ',' + to_string(c));
+    grid[r][c] = '0';
 
     dfs(grid, visited, r + 1, c);
     dfs(grid, visited, r - 1, c);
@@ -25,8 +25,7 @@ public:
 
     for (int i = 0; i < ROWS; i++) {
       for (int j = 0; j < COLS; j++) {
-        if (visited.count(to_string(i) + ',' + to_string(j)) == 0 &&
-            grid[i][j] == '1') {
+        if (grid[i][j] == '1') {
           // if cell equals to one execute a dfs otherwise
           dfs(grid, visited, i, j);
           ++island_count;
