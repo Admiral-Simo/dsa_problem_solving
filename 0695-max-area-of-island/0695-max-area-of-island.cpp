@@ -1,7 +1,7 @@
 class Solution {
 public:
   int bfs(vector<vector<int>> &grid, int r, int c, int ROWS, int COLS) {
-    int surface = 1;
+    int surface = 0;
     queue<pair<int, int>> q;
     q.push({r, c});
 
@@ -13,6 +13,7 @@ public:
       pair<int, int> curr = q.front();
       int r = curr.first, c = curr.second;
       q.pop();
+      surface++;
 
       for (auto &dir : directions) {
         int new_r = r + dir.first;
@@ -21,7 +22,6 @@ public:
             grid[new_r][new_c] == 1) {
           q.push({new_r, new_c});
           grid[new_r][new_c] = 0;
-          surface++;
         }
       }
     }
