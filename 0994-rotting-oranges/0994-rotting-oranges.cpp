@@ -26,15 +26,18 @@ public:
               int c = rotten.front().second;
               rotten.pop();
 
-              for (const auto &dir : directions) {
-                      int new_r = r + dir.first;
-                      int new_c = c + dir.second;
+              for (int i = -1; i < 2; i++) {
+                  for (int j = -1; j < 2; j++) {
+                      if ((i != 0 && j != 0) || (i == 0 && j == 0)) continue;
+                      int new_r = r + i;
+                      int new_c = c + j;
 
                       if (new_r >= 0 && new_c >= 0 && new_r < rows && new_c < cols && grid[new_r][new_c] == 1) {
                           grid[new_r][new_c] = 2;
                           rotten.push({new_r, new_c});
                           freshCount--;
                       }
+                  }
               }
 
           }
