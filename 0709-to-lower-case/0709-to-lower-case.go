@@ -1,12 +1,12 @@
 func toLowerCase(s string) string {
-	n := len(s)
-	for i := 0; i < n; i++ {
-		if isUpperCase(s[i]) {
+	bytes := []byte(s)
+	for i := 0; i < len(s); i++ {
+		if isUpperCase(bytes[i]) {
 			// transform Upper to Lower decreasing it by 20
-			s = s[:i] + string(s[i]+32) + s[i+1:]
+			bytes[i] += 32
 		}
 	}
-	return s
+	return string(bytes)
 }
 
 func isUpperCase(s byte) bool {
