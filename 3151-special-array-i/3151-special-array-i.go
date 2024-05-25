@@ -1,19 +1,8 @@
-
-func sameParity(a, b int) bool {
-	return a%2 == 0 && b%2 == 0 || a%2 != 0 && b%2 != 0
-}
-
 func isArraySpecial(nums []int) bool {
-	prev := 0
-	for i, n := range nums {
-		if i == 0 {
-			prev = n
-			continue
-		}
-		if sameParity(prev, n) {
+	for i := 0; i < len(nums)-1; i++ {
+		if nums[i]%2 == nums[i+1]%2 {
 			return false
 		}
-		prev = n
 	}
 	return true
 }
