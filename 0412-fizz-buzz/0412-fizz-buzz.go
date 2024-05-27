@@ -1,5 +1,5 @@
 func fizzBuzz(n int) []string {
-	result := []string{}
+	result := make([]string, 0, n)
 	for i := 1; i <= n; i++ {
 		switch {
 		case i%3 == 0 && i%5 == 0:
