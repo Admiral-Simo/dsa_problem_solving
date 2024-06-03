@@ -1,12 +1,11 @@
-
 func minimumChairs(s string) int {
 	minChairs := 0
 	curr := 0
 	for _, r := range s {
 		if r == 'E' {
-			curr += 1
+			curr++
 		} else {
-			curr -= 1
+			curr--
 		}
 		minChairs = max(curr, minChairs)
 	}
