@@ -2,8 +2,16 @@ use std::collections::HashSet;
 
 impl Solution {
     pub fn intersection(nums1: Vec<i32>, nums2: Vec<i32>) -> Vec<i32> {
-        let set1: HashSet<i32> = nums1.into_iter().collect();
-        let set2: HashSet<i32> = nums2.into_iter().collect();
-        set1.intersection(&set2).cloned().collect()
+        let mut result: Vec<i32> = vec![];
+        let mut set: HashSet<i32> = HashSet::new();
+        for n in nums1 {
+            set.insert(n);
+        }
+        for n in nums2 {
+            if set.remove(&n) {
+                result.push(n);
+            }
+        }
+        result
     }
 }
