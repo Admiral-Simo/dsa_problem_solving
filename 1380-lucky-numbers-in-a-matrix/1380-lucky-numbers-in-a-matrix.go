@@ -1,11 +1,26 @@
 func luckyNumbers(matrix [][]int) []int {
-	var result []int
+	var wg sync.WaitGroup
+	resultChan := make(chan int, len(matrix))
+
 	for i := 0; i < len(matrix); i++ {
-		minVal, minIdx := findMinInRow(matrix[i])
-		if isMaxInColumn(matrix, minVal, minIdx) {
-			result = append(result, minVal)
-		}
+		wg.Add(1)
+		go func(row []int, matrix [][]int) {
+			defer wg.Done()
+			minVal, minIdx := findMinInRow(row)
+			if isMaxInColumn(matrix, minVal, minIdx) {
+				resultChan <- minVal
+			}
+		}(matrix[i], matrix)
 	}
+
+	wg.Wait()
+	close(resultChan)
+
+	var result []int
+	for val := range resultChan {
+		result = append(result, val)
+	}
+
 	return result
 }
 
