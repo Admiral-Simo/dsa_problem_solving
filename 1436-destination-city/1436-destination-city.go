@@ -1,15 +1,12 @@
 func destCity(paths [][]string) string {
-	var (
-		outgoingCities = map[string]struct{}{}
-		ongoingCities  = map[string]struct{}{}
-	)
+	outgoingCities := map[string]struct{}{}
 
 	for _, path := range paths {
 		outgoingCities[path[0]] = struct{}{}
-		ongoingCities[path[1]] = struct{}{}
 	}
 
-	for city := range ongoingCities {
+	for _, path := range paths {
+		city := path[1]
 		if _, ok := outgoingCities[city]; !ok {
 			return city
 		}
